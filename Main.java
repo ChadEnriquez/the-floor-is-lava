@@ -116,7 +116,7 @@ public class Main extends JPanel {
             String footerText = "CMSC 137 B-4L GROUP 5";
             int footerTextWidth = fm_footer.stringWidth(footerText);
             int footerX = 50 + (500 - footerTextWidth) / 2;
-            int footerY = getHeight() - 100;
+            int footerY = fm_button.getHeight() + startY + 125 + fm_footer.getAscent();
             g.drawString(footerText, footerX, footerY);
 
             Rectangle clickableAreaFooter = new Rectangle(footerX, footerY - fm_footer.getAscent(), footerTextWidth, fm_footer.getHeight());
