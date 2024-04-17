@@ -22,6 +22,8 @@ public class Main extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("The Floor is Lava");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Set the frame to maximize
+        frame.setUndecorated(true); // Set the frame to undecorated
+        frame.setResizable(false); // Disable resizing6
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Load GIF
