@@ -173,6 +173,7 @@ public class Main extends JPanel {
             window.setResizable(false);
             window.setUndecorated(true);
             window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
             Main main = new Main();
             window.add(main);
             window.setVisible(true);
