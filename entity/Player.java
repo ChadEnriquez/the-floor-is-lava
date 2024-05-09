@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import java.awt.Rectangle;
 import main.GamePanel;
 import main.KeyHandler;
 
@@ -17,6 +18,13 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
+
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
+
         setDefaultValues();
         getPlayerImage();
     }
@@ -45,40 +53,49 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.upPressed == true) {
-            direction = "up";
-            y -= speed;
-        } else if (keyH.downPressed == true) {
-            direction = "down";
-            y += speed;
-        } else if (keyH.leftPressed == true) {
-            direction = "left";
-            x -= speed;
-        } else if (keyH.rightPressed == true) {
-            direction = "right";
-            x += speed;
-        } else if (keyH.spacePressed == true) {
-            // Perform action
-            System.out.println("Spacebar pressed...");
-        } else if (keyH.escapePressed == true) {
-            // Exit game/Close window
-            System.exit(0);
-        } else if (keyH.enterPressed == true) {
-            // Open Chat Room
-            System.out.println("Enter pressed...");
-        } else {
-            // Handle other key events
-        }
-
-        // Update sprite counter
-        spriteCounter++;
-        if (spriteCounter > 10) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 1;
+        // Check if any directional key is pressed
+        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed) {
+                direction = "up";
+            } else if (keyH.downPressed) {
+                direction = "down";
+            } else if (keyH.leftPressed) {
+                direction = "left";
+            } else if (keyH.rightPressed) {
+                direction = "right";
             }
-            spriteCounter = 0;
+
+            // Check collision
+            collisionOn = false;
+            gp.cc.checkTile(this);
+
+            // If collision is not detected, move the player
+            if (!collisionOn) {
+                switch (direction) {
+                    case "up":
+                        y -= speed;
+                        break;
+                    case "down":
+                        y += speed;
+                        break;
+                    case "left":
+                        x -= speed;
+                        break;
+                    case "right":
+                        x += speed;
+                        break;
+                }
+            }
+
+            // Update sprite counter
+            spriteCounter++;
+            if (spriteCounter > 10) {
+                spriteNum = (spriteNum == 1) ? 2 : 1;
+                spriteCounter = 0;
+            }
+        } else if (keyH.escapePressed) {
+            // Perform action
+            System.exit(0);
         }
     }
 

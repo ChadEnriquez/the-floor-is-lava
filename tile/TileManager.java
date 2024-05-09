@@ -15,9 +15,9 @@ import java.awt.image.BufferedImage;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tile;
+    public Tile[] tile;
 
-    int mapTileNum[][];
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -45,6 +45,7 @@ public class TileManager {
 
             tile[0] = new Tile();
             tile[0].tileImage = ImageIO.read(getClass().getResourceAsStream("../assets/tiles/wall.png"));
+            tile[0].collision = true;
 
             tile[1] = new Tile();
             tile[1].tileImage = ImageIO.read(getClass().getResourceAsStream("../assets/tiles/earth.png"));
