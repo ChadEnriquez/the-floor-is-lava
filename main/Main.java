@@ -9,7 +9,7 @@ import javax.swing.*;
 import javafx.util.*;
 
 public class Main extends JPanel {
-    private static final String[] BUTTON_TEXTS = { "START GAME", "SETTINGS", "QUIT" };
+    private static final String[] BUTTON_TEXTS = { "START GAME", "MULTIPLAYER", "QUIT" };
     private static final String FOOTER_TEXT = "CMSC 137 B-4L GROUP 5";
 
     private Image gifBackground;
@@ -87,7 +87,7 @@ public class Main extends JPanel {
                 start_game_window.setResizable(false); // Disable resizings
                 start_game_window.setUndecorated(true);
                 start_game_window.setTitle("The Floor is Lava");
-                start_game_window.setExtendedState(JFrame.MAXIMIZED_BOTH); // Set the start_game_window to maximize
+                // start_game_window.setExtendedState(JFrame.MAXIMIZED_BOTH); // Set the start_game_window to maximize
 
                 GamePanel gamePanel = new GamePanel();
                 start_game_window.add(gamePanel);
@@ -98,8 +98,8 @@ public class Main extends JPanel {
                 gamePanel.startGameThread();
 
                 break;
-            case "SETTINGS":
-                System.out.println("Opening settings...");
+            case "MULTIPLAYER":
+                System.out.println("Setting up multiplayer...");
                 break;
             case "QUIT":
                 System.out.println("Quit the game...");
