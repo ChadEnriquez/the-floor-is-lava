@@ -1,6 +1,7 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
 
 public class CollisionChecker {
 
@@ -10,6 +11,33 @@ public class CollisionChecker {
         this.gp = gp;
     }
 
+    public boolean isOnLavaTile(Player player) {
+        // Bounds of the player
+        int playerLeftX = player.x + player.solidArea.x;
+        int playerRightX = player.x + player.solidArea.x + player.solidArea.width;
+        // int playerTopY = player.y + player.solidArea.y;
+        int playerBottomY = player.y + player.solidArea.y + player.solidArea.height;
+
+        int playerLeftCol = playerLeftX / gp.tileSize;
+        int playerRightCol = playerRightX / gp.tileSize;
+        // int playerTopRow = playerTopY / gp.tileSize;
+        int playerBottomRow = playerBottomY / gp.tileSize;
+
+        int tileNum1, tileNum2;
+
+        // Check the tile under the player
+        tileNum1 = gp.tm.mapTileNum[playerLeftCol][playerBottomRow];
+        tileNum2 = gp.tm.mapTileNum[playerRightCol][playerBottomRow];
+
+        // If the player is on a lava tile, decrease the number of lives
+        if (tileNum1 == 2 || tileNum2 == 2) {
+            player.loseLife();
+            if (player.getLives() == 0) {
+                System.out.println("DEAD PLAYER");
+            }
+        }
+        return false;
+    }
     public void checkTile(Entity entity) {
         // Bounds of the entity
         int entityLeftX = entity.x + entity.solidArea.x;

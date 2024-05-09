@@ -15,6 +15,8 @@ public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
 
+    private int lives;
+
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -25,6 +27,7 @@ public class Player extends Entity {
         solidArea.width = 32;
         solidArea.height = 32;
 
+        lives = 3;
         setDefaultValues();
         getPlayerImage();
     }
@@ -85,6 +88,13 @@ public class Player extends Entity {
                         x += speed;
                         break;
                 }
+
+                if ((boolean) gp.cc.isOnLavaTile(this)) {
+                    lives--;
+                    if (lives == 0) {
+                        // Character Death
+                    }
+                }
             }
 
             // Update sprite counter
@@ -138,5 +148,15 @@ public class Player extends Entity {
                 break;
         }
         g2.drawImage(playerImage, x, y, gp.tileSize, gp.tileSize, null);
+    }
+
+    public int getLives() {
+        System.out.println("Player lives: " + lives);
+        return lives;
+    }
+
+    public void loseLife() {
+        lives--;
+        System.out.println("Player lives: " + lives);
     }
 }

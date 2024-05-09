@@ -6,7 +6,6 @@ import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
-import javafx.util.*;
 
 public class Main extends JPanel {
     private static final String[] BUTTON_TEXTS = { "START GAME", "MULTIPLAYER", "QUIT" };
@@ -32,7 +31,7 @@ public class Main extends JPanel {
 
     private void loadResources() {
         try {
-            gifBackground = new ImageIcon(Main.class.getResource("/assets/background_1.gif")).getImage();
+            gifBackground = new ImageIcon(Main.class.getResource("/assets/images/background_1.gif")).getImage();
             InputStream is1 = Main.class.getResourceAsStream("/assets/fonts/PixelifySans-VariableFont_wght.ttf");
             titleFont = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(Font.BOLD, 65);
             InputStream is2 = Main.class.getResourceAsStream("/assets/fonts/PixelifySans-VariableFont_wght.ttf");

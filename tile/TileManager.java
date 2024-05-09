@@ -50,6 +50,7 @@ public class TileManager {
             tile[1] = new Tile();
             tile[1].tileImage = ImageIO.read(getClass().getResourceAsStream("../assets/tiles/earth.png"));
 
+            // Lava Tile
             tile[2] = new Tile();
             tile[2].tileImage = createColorTile(new Color(255, 37, 0), 48, 48);
 
