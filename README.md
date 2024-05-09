@@ -12,3 +12,9 @@ This is a 2D Java Game that allows multiplayer mode. The game revolves around th
 ### Title Screen
 <!-- insert image here from assets/images/ -->
 ![Title Screen](assets/images/title_screen_sample.png)
+
+### Gameplay
+
+## Credits
+- How to Make a 2D Game in Java by RyiSnow
+    - https://www.youtube.com/playlist?list=PL_QPQmz5C6WUF-pOQDsbsKbaBZqXj4qSq
