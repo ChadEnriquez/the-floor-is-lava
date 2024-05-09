@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed, enterPressed, escapePressed;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -41,9 +41,10 @@ public class KeyHandler implements KeyListener {
         } else if(code == KeyEvent.VK_SPACE) {
             // Perform action
         } else if(code == KeyEvent.VK_ESCAPE) {
-            // Pause game
+            // Exit game/Close window
+            escapePressed = true;
         } else if(code == KeyEvent.VK_ENTER) {
-            // Confirm action
+            // Open Chat Room
         } else {
             // Handle other key events
         }
@@ -79,9 +80,10 @@ public class KeyHandler implements KeyListener {
         } else if(code == KeyEvent.VK_SPACE) {
             // Perform action
         } else if(code == KeyEvent.VK_ESCAPE) {
-            // Pause game
+            // Exit game/Close window
+            escapePressed = false;
         } else if(code == KeyEvent.VK_ENTER) {
-            // Confirm action
+            // Open Chat Room
         } else {
             // Handle other key events
         }

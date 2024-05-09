@@ -57,6 +57,17 @@ public class Player extends Entity {
         } else if (keyH.rightPressed == true) {
             direction = "right";
             x += speed;
+        } else if (keyH.spacePressed == true) {
+            // Perform action
+            System.out.println("Spacebar pressed...");
+        } else if (keyH.escapePressed == true) {
+            // Exit game/Close window
+            System.exit(0);
+        } else if (keyH.enterPressed == true) {
+            // Open Chat Room
+            System.out.println("Enter pressed...");
+        } else {
+            // Handle other key events
         }
 
         // Update sprite counter
